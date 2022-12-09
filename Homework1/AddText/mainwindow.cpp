@@ -1,9 +1,9 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent)
-    , ui(new Ui::MainWindow)
+MainWindow::MainWindow(QWidget *parent) :
+    QMainWindow(parent),
+    ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
 }
@@ -13,33 +13,23 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::on_pushButton_pressed()
+void MainWindow::on_add_text_button_clicked()
 {
-    QString text = ui->plainTextEdit->toPlainText();
-    ui->plainTextEdit_2->moveCursor(QTextCursor::End);
-    ui->plainTextEdit_2->insertPlainText(text);
-    ui->plainTextEdit_2->moveCursor(QTextCursor::End);
+    ui->plainTextEdit->selectAll();
+    ui->plainTextEdit->copy();
+    ui->plainTextEdit_2->paste();
 }
 
-
-void MainWindow::on_pushButton_2_pressed()
+void MainWindow::on_copy_text_button_clicked()
 {
-    QString text = ui->plainTextEdit->toPlainText();
+    ui->plainTextEdit->selectAll();
+    ui->plainTextEdit->copy();
     ui->plainTextEdit_2->clear();
-    ui->plainTextEdit_2->insertPlainText(text);
+    ui->plainTextEdit_2->paste();
 }
 
-
-void MainWindow::on_pushButton_3_pressed()
+void MainWindow::on_insert_text_button_clicked()
 {
-   QTextEdit txt;
-   txt.setHtml("<font color='red'>Hello</font>");
-   txt.resize(320, 250);
-   txt.show();
-}
-
-
-void MainWindow::on_pushButton_4_clicked()
-{
-    close();
+    QString text = "<font color='red'>Hello</font>";
+    ui->plainTextEdit_2->appendHtml(text);
 }
