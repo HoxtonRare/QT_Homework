@@ -5,7 +5,7 @@
 
 ParseText::ParseText()
 {
-    text = " #@COP@ © #@PPM@ ‰ #@TDM@ ® #@EUR@ € #@RUB@ ₽";
+    text = "#@COP@ © #@PPM@ ‰ #@TDM@ ® #@EUR@ € #@RUB@ ₽";
     preText = "";
     key = "";
     value = "";
@@ -21,6 +21,7 @@ ParseText::ParseText()
             iter = i + 1;
             tegsList.insert(key, value);
         }
+        if (i == text.end()) break;
     }
 }
 
